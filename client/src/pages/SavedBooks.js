@@ -25,7 +25,6 @@ const SavedBooks = () => {
     if (!token) {
       return false;
     }
-    console.log(bookId);
     try {
       const { data } = await removeBook({
         variables: { bookId },
