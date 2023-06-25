@@ -9,9 +9,10 @@ import { REMOVE_BOOK } from "../utils/mutations";
 const SavedBooks = () => {
   const { loading, data } = useQuery(GET_ME);
 
-  const [removeBook] = useMutation(REMOVE_BOOK);
+  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
 
   const userData = data?.me || {};
+  console.log(userData);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -24,7 +25,7 @@ const SavedBooks = () => {
     if (!token) {
       return false;
     }
-
+    console.log(bookId);
     try {
       const { data } = await removeBook({
         variables: { bookId },
